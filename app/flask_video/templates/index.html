@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Publishing</title>
+</head>
+<body>
+    <h1>Published Videos</h1>
+    <ul>
+        {% for video in videos %}
+        <li>
+            <video controls>
+                <source src="{{ url_for('download_file', filename=video) }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </li>
+        {% endfor %}
+    </ul>
+    <h2>Upload a Video</h2>
+    <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+        <input type="file" name="video">
+        <input type="submit" value="Upload">
+    </form>
+</body>
+</html>
+
